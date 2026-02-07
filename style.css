@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #6a82fb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.container {
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+h2 {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  margin-bottom: 12px;
+}
+
+h2 .emoji {
+  margin: 0 0.5rem;
+}
+
+p {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  margin-bottom: 30px;
+}
+
+#heartWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s;
+}
+
+#heart::before,
+#heart::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  background: red;
+  border-radius: 50px 50px 0 0;
+  top: 0;
+}
+
+#heart::before {
+  left: 50px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+#heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+#heart.clicked {
+  transform: scale(2);
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(2); }
+  100% { transform: scale(2.2); }
+}
+
+#sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffd700;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkleAnim 1s ease-in-out forwards;
+}
+
+@keyframes sparkleAnim {
+  0% { opacity: 1; transform: translate(0,0) scale(1); }
+  50% { opacity: 1; transform: translate(var(--x), var(--y)) scale(1.5); }
+  100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); }
+}
+
+.message {
+  margin-top: 20px;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-weight: bold;
+  min-height: 50px;
+}
