@@ -7,53 +7,69 @@
 
 body {
   height: 100vh;
+  width: 100%;
   background: linear-gradient(135deg, #2c3e50, #6a82fb);
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   overflow: hidden;
-  padding: 20px;
+  padding: 10px;
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  max-width: 520px;
   width: 100%;
+  max-width: 520px;
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(6px);
   border-radius: 22px;
-  padding: 30px;
+  padding: clamp(20px, 5vw, 35px);
   box-shadow: 0 15px 40px rgba(0,0,0,0.25);
 }
 
 h2 {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
   white-space: nowrap;
-  font-size: clamp(1.6rem, 5vw, 2rem);
-  margin-bottom: 12px;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin-bottom: 15px;
+  min-width: 0;
+}
+
+h2 .title-text {
+  text-align: center;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 h2 .emoji {
   margin: 0 0.5rem;
+  flex-shrink: 0;
 }
 
 p {
   font-size: clamp(1rem, 4vw, 1.2rem);
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 #heartWrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 #heart {
   position: relative;
-  width: 100px;
-  height: 90px;
+  width: 90px;
+  height: 80px;
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.3s;
@@ -63,15 +79,15 @@ p {
 #heart::after {
   content: "";
   position: absolute;
-  width: 50px;
-  height: 80px;
+  width: 45px;
+  height: 70px;
   background: red;
   border-radius: 50px 50px 0 0;
   top: 0;
 }
 
 #heart::before {
-  left: 50px;
+  left: 45px;
   transform: rotate(-45deg);
   transform-origin: 0 100%;
 }
@@ -83,13 +99,13 @@ p {
 }
 
 #heart.clicked {
-  transform: scale(2);
+  transform: scale(1.8);
   animation: pulse 0.6s ease-in-out infinite alternate;
 }
 
 @keyframes pulse {
-  0% { transform: scale(2); }
-  100% { transform: scale(2.2); }
+  0% { transform: scale(1.8); }
+  100% { transform: scale(2); }
 }
 
 #sparkles {
@@ -103,8 +119,8 @@ p {
 
 .sparkle {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: #ffd700;
   border-radius: 50%;
   opacity: 0;
